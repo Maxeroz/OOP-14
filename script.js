@@ -118,8 +118,8 @@ bmw.brake();
 
 mercedes.accelerate();
 mercedes.brake();
-*/
 
+*/
 ///////////////////////////////////////
 // ES6 Classes
 
@@ -128,8 +128,8 @@ mercedes.brake();
 
 // class declaration
 class PersonCl {
-  constructor(fristName, birthYear) {
-    this.fristName = fristName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   }
 
@@ -139,13 +139,29 @@ class PersonCl {
   }
 
   greet() {
-    console.log(`Hey ${this.fristName}`);
+    console.log(`Hey ${this.fullName}`);
+  }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  // Set a property that already exists
+  set fullName(name) {
+    console.log(name); // name = Jessica Davis
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
   }
 }
 
-const jessica = new PersonCl('Jessica', 1996);
+const jessica = new PersonCl('Jessica Davis', 1996);
 console.log(jessica);
 jessica.calcAge();
+console.log(jessica.age);
 
 console.log(jessica.__proto__ === PersonCl.prototype);
 
@@ -154,3 +170,27 @@ console.log(jessica.__proto__ === PersonCl.prototype);
 // };
 
 jessica.greet();
+
+// 1. Classes are NOT hoisted
+// 2. Classes are first-class citizes
+// 3. Classes are executed in strict mode
+
+///////////////////////////////////////
+// Setters and Getters
+const account = {
+  owner: 'Jonas',
+  movements: [200, 530, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+
+console.log(account.latest);
+
+account.latest = 50;
+console.log(account.movements);
