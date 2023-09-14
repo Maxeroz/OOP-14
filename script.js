@@ -1,5 +1,5 @@
 'use strict';
-/*
+// /*
 ///////////////////////////////////////
 // What is Object-Oriented Programming?
 
@@ -31,6 +31,13 @@ console.log(jonas);
 const matilda = new Person('Matilda', 2017);
 const jack = new Person('Jack', 1975);
 console.log(matilda, jack);
+
+Person.hey = function () {
+  console.log('Hey there 👋🏻');
+  console.log(this);
+};
+
+Person.hey();
 
 console.log(jonas instanceof Person);
 
@@ -119,7 +126,6 @@ bmw.brake();
 mercedes.accelerate();
 mercedes.brake();
 
-*/
 ///////////////////////////////////////
 // ES6 Classes
 
@@ -146,6 +152,7 @@ class PersonCl {
     return 2037 - this.birthYear;
   }
 
+  // Instance methods
   // Set a property that already exists
   set fullName(name) {
     console.log(name); // name = Jessica Davis
@@ -156,6 +163,12 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  // Static method
+  static hey = function () {
+    console.log('Hey there 👋🏻');
+    console.log(this);
+  };
 }
 
 const jessica = new PersonCl('Jessica Davis', 1996);
@@ -194,3 +207,10 @@ console.log(account.latest);
 
 account.latest = 50;
 console.log(account.movements);
+// */
+
+///////////////////////////////////////
+// Static Methods
+console.dir(Array);
+
+PersonCl.hey();
