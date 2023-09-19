@@ -464,7 +464,6 @@ jay.init('Jay', 2010, 'Computer Science');
 jay.introduce();
 jay.calcAge();
 */
-
 ///////////////////////////////////////
 // Another Class Example
 
@@ -494,21 +493,23 @@ class Account {
 
   deposit(val) {
     this.#movements.push(val);
+    return this;
   }
 
   withdraw(val) {
     this.deposit(-val);
+    return this;
   }
 
   requestLoan(val) {
     if (this.#approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan is approved`);
+      return this;
     }
   }
 
   // 4) Private methods
-
   #approveLoan(val) {
     return true;
   }
@@ -540,3 +541,6 @@ Account.helper();
 // 3) Public methods
 // 4) Private methods
 // (there is also the static version)
+
+///////////////////////////////////////
+// Chaining Methods
