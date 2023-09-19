@@ -505,8 +505,8 @@ class Account {
     if (this.#approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan is approved`);
-      return this;
     }
+    return this;
   }
 
   // 4) Private methods
